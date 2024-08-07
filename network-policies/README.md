@@ -8,5 +8,4 @@
 
 
 
-
-![Default network communication in a Kubernetes cluster](img/kubernetes-default-communication.gif)
+[<img src="img/kubernetes-default-communication.gif" width="70%" />](img/kubernetes-default-communication.gif)
