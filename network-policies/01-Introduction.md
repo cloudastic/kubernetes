@@ -8,7 +8,4 @@
 
 
 
-[<img src="[default-comm]" width="80%" />][default-comm]
-
-
-[default-comm]: img/kubernetes-default-communication.gif
+[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
