@@ -1,14 +1,14 @@
 # Lab Set-up
 
-For the purpose of the demo, We have used the Minikube cluster and have chosen the "Weave Net" CNI (Container Network Interface).
+For the purpose of this 'Kubernetes Network Policies' demo, We have used the '[Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)' cluster and have chosen the 'Weave Net' CNI (Container Network Interface).
 
-__Note:__ The most recent version of Weave Net available at the time of this recording is v2.8.1
+__Note:__ We have used the most recent version v2.8.1 of 'Weave Net' available at the time of this recording.
 
 __Pre-Requisites:__
-* Download and install minikube on your machine
-* Download the "[weave-daemonset-k8s.yaml](https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml)" 
+* Download and install '[Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)' on your machine.
+* Download the '[weave-daemonset-k8s.yaml](https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml)'
 
-__Note:__ 
+## Start your cluster: ##
 * We need to explicitly specify the "CNI" whilst starting the minikube cluster by using the following command, 
 
 ```
