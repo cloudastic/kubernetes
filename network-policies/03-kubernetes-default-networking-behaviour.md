@@ -4,7 +4,9 @@
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
 
-[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
+[<img src="img/kubernetes-default-communication-single-ns.gif" width="80%" />](img/kubernetes-default-communication-single-ns.gif)
+
+[<img src="img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](img/kubernetes-default-communication-multiple-ns.gif)
 
 ## Demo
 
