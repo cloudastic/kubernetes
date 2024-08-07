@@ -3,9 +3,12 @@
 * Each Pod in the cluster gets a unique IP address.
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
+
+[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
+
 ## Demo
 
-Now that we have created the necessary resources already in the earlier section, lets try to establish connection with different pods and see if that works.
+Now that we have already created the necessary resources, lets try to establish connection between different pods and see if that works.
 
 ## Check the IP Address of each pods
 ```
@@ -45,7 +48,6 @@ kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n f
 
 This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster.
 
-[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
 
 
 
