@@ -5,3 +5,8 @@
   02. What challenge it addresses
   03. What is CNI (Container Network Interface) and why its needed
   04. Learning goals
+
+
+
+
+![Default network communication in a Kubernetes cluster](img/kubernetes-default-communication.gif)
