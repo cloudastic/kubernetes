@@ -1,2 +1,2 @@
-# kubernetes Network Policies
+# Kubernetes Network Policies
 
