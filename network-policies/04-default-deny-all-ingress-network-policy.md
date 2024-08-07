@@ -21,7 +21,7 @@ spec:
 EOF
 ```
 
-Now lets try to connect to the Middleware pod from both the webapp and mysql pod.
+Now lets try to connect to the `middleware` pod from both the `webapp` and `mysql` pod.
 
 ```
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
