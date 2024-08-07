@@ -38,15 +38,13 @@ kubectl exec -it -n middleware middleware -- curl $(kubectl get pods mysql -o wi
 
 ## Connect from mysql to middleware pod
 ```
+-- mysql ==> middleware pod
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
-
-## Connect from mysql to webapp pod
-```
+-- mysql => webapp pod
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 ```
 
-This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster.
+This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster. The same is true even if all these pods co-exists in the same namespace or its spread across different nodes that form a cluster. 
 
 
 
