@@ -29,7 +29,7 @@ We will start with basics and slowly work our way from the default kubernetes ne
 
 Something from this., 
 
-[<img src="./network-policies/img/deny-incoming-traffic-on-middleware-namespace-2.gif" width="80%" />](./network-policies/img/deny-incoming-traffic-on-middleware-namespace-2.gif)
+[<img src="./network-policies/img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](./network-policies/img/kubernetes-default-communication-multiple-ns.gif)
 
 to this at the end.
 
