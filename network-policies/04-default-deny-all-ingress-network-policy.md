@@ -4,7 +4,6 @@
 Before delving into the Network Policies in Kubernetes, we should briefly learn about the `CNI (Container Network Interface) Plugins`
 * You need a `CNI Plugin` installed on the Cluster for the Network Policies to take effect. 
 * There are [several CNI Plugins](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy) available in the market, and all of them are supposed to implement the [Kubernetes network model](https://kubernetes.io/docs/concepts/services-networking/#the-kubernetes-network-model) but they differ in some aspects like support for varying networking needs, Performance, Security, Infrastrcture constraints and many more. 
-* Various Cloud service providers like AWS, Azure, GCP and others have the CNI Plugins pre-installed by default. 
 
 
 ## Network Policies
@@ -12,6 +11,9 @@ Before delving into the Network Policies in Kubernetes, we should briefly learn 
 * They are used to control the flow of traffic between the pods and different network entities. 
 
 ## Demo
+* We know that, by-default all the pods in a cluster can freely communicate with other pods without any restriction. 
+* By the end of the exercise, our goal is to ensure that the  `webapp` pod in the `frontend` namespace should communicate with the `mysql` pod in the `backend` namespace only through the `middelware` pod in the `middleware` namespace. Similarly, the `mysql` pod in the `backend` namespace should only communicate with the `webapp` pod in the `frontend` namespace only through the `middleware` pod in the `middleware` namespace. All the other communications should be restricted. 
+* Before jumping straight to the desired outcome, we will cover other use-cases so that we gain a deeper understanding of the concepts along the journey. 
 
 Let us now block all the incoming traffic 'ingress' to the middleware namespace.
 
