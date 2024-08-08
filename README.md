@@ -1,7 +1,7 @@
 ## Kubernetes Network Policies ##
 
-
 **Introduction**
+
 In this section, you will learn about, 
   * What are Kubernetes Network Policies
   * What challenge it addresses
@@ -29,9 +29,9 @@ We will start with basics and slowly work our way from the default kubernetes ne
 
 Something from this., 
 
-[<img src="img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](img/kubernetes-default-communication-multiple-ns.gif)
+[<img src="./network-policies/img/deny-incoming-traffic-on-middleware-namespace-2.gif" width="80%" />](./network-policies/img/deny-incoming-traffic-on-middleware-namespace-2.gif)
 
 to this at the end.
 
-[<img src="img/Network-Policy.gif" width="80%" />](img/Network-Policy.gif)
+[<img src="./network-policies/img/Network-Policy.gif" width="80%" />](./network-policies/img/Network-Policy.gif)
   
