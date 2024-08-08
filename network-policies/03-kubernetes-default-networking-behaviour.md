@@ -4,7 +4,7 @@
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
 ## default network communication within single Namespace
-[<img src="img/kubernetes-default-communication-single-ns.gif" width="70%" height="70%" />](img/kubernetes-default-communication-single-ns.gif)
+[<img src="img/kubernetes-default-communication-single-ns.gif" width="60%" height="60%" />](img/kubernetes-default-communication-single-ns.gif)
 
 ## default network communication across different Namespaces
 [<img src="img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](img/kubernetes-default-communication-multiple-ns.gif)

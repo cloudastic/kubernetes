@@ -1,7 +1,6 @@
+# Default deny all ingress traffic
 
-
-
-* Network Policies are namespaced resources. 
+## Network Policies are namespaced resources. 
 
 Let us now block all the incoming traffic 'ingress' to the middleware namespace.
 
