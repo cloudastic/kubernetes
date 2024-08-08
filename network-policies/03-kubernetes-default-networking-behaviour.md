@@ -1,6 +1,8 @@
 # Kubernetes default network behaviour
 
 * Each Pod in the cluster gets a unique IP address.
+* Containers within a pod share the same network namespace that includes the IP, Port and the MAC address. 
+* A container within a multi-container pod can reach other containers within the pod through `localhost`.
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
 ## default network communication within single Namespace
