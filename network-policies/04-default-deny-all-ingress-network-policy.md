@@ -12,16 +12,17 @@ Before delving into the Network Policies in Kubernetes, we should briefly learn 
 
 ## Demo
 * We know that, by-default all the pods in a cluster can freely communicate with other pods without any restriction. 
-* By the end of the exercise, our goal is to ensure that the  `webapp` pod in the `frontend` namespace should communicate with the `mysql` pod in the `backend` namespace only through the `middelware` pod in the `middleware` namespace. Similarly, the `mysql` pod in the `backend` namespace should only communicate with the `webapp` pod in the `frontend` namespace only through the `middleware` pod in the `middleware` namespace. All the other communications should be restricted. 
-* Before jumping straight to the desired outcome, we will cover other use-cases so that we gain a deeper understanding of the concepts along the journey. 
+* By the end of the exercise, our goal is to ensure that the  `webapp` pod in the `frontend` namespace should communicate with the `mysql` pod in the `backend` namespace only through the `middelware` pod in the `middleware` namespace. 
+* Similarly, the `mysql` pod in the `backend` namespace should only communicate with the `webapp` pod in the `frontend` namespace only through the `middleware` pod in the `middleware` namespace. All the other communications should be restricted. 
+* Before diving into the desired outcome, we'll explore a few more concepts and use cases to build a deeper understanding as we progress.
 
-Let us now block all the incoming traffic 'ingress' to the middleware namespace.
+Let us now block all the incoming traffic 'ingress' to the `frontend` namespace.
 
-[<img src="img/deny-incoming-traffic-on-middleware-namespace-2.gif" width="80%" />](img/deny-incoming-traffic-on-middleware-namespace-2.gif)
+[<img src="img/deny-incoming-traffic-to-frontend-namespace.gif" width="80%" />](img/deny-incoming-traffic-to-frontend-namespace.gif.gif)
 
-### Default deny all ingress for middleware namespace
+### Deny all ingress traffic to frontend namespace
 ```
-cat <<EOF | kubectl create -n middleware -f -
+cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -33,40 +34,39 @@ spec:
 EOF
 ```
 
-Now lets try to connect to the `middleware` pod from both the `webapp` and `mysql` pod.
+Now lets try to connect to the `frontend` pod from both the `middleware` and `mysql` pod.
 
-## [Inbound connection] : Connect from webapp to middleware pod
+## Test the Ingress to `frontend`
 ```
-kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
-
-## [Inbound connection] : Connect from mysql to middleware pod
-```
-kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
-
-Both the ingress requests have now timed out, clearly indicating that incoming traffic to the `middleware` namespace is blocked. Let us now try to establish outbound connection from the `middleware` pod to other pods in `frontend` and `backend` namespace.
-
-
-## [Outbound connection] : Connect from middleware to webapp pod
-```
+# [Test Ingress from 'middleware' to 'webapp' pod]
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
+
+# [Test Ingress from 'mysql' to 'webapp' pod]
+kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 ```
 
-## [Outbound connection] : Connect from middleware to mysql pod
+Both the ingress requests have now timed out, clearly indicating that incoming traffic to the `frontend` namespace is blocked. Let us now try to establish outbound connection from the `webapp` pod in the `frontend` namespace to other pods in `middleware` and `backend` namespace.
+
+
+## Test the Egress from `frontend`
 ```
-kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
+# [Test Egress from 'webapp' to 'middleware' pod]
+kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
+
+# [Test Egress from 'webapp' to 'mysql' pod]
+kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
+
 ```
 
-Well!, the outbound connections from the `middleware` pod is working without any issues. 
+Well, the outbound connections from the `middleware` pod is working without any issues. 
 How do we restrict the Outbound connections then ? 
-Its done through the Network Policy with the policy type 'egress'.
+Its done through the Network Policy with the policy type set to 'egress'.
 
 
 ## Use-cases:
 
 * Network isolation could be done either through blacklisting / whitelisting approach. 
 * The `default deny` policies are used as a best practice to knock down all the communications in first place. Once this baselining is applied, you can then add the whitelist on top of it to create exceptions. This way, you block everything first and then allow only those trusted connections. 
-* Network Policies should be a key component of Kubernetes cluster security, but they are not a silver bullet since they don't offer deep traffic inspection like an enterprise-grade firewall. However, by enabling only trusted connections between resources, you effectively reduce the attack surface of the cluster.
+* Network Policies should be a key component of Kubernetes cluster security, but they are not the silver bullet since they don't offer deep traffic inspection like an enterprise-grade firewall. However, by enabling only trusted connections between resources, you effectively reduce the attack surface of the cluster.
 
 
