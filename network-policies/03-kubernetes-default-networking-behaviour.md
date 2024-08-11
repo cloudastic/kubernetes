@@ -9,7 +9,7 @@
 [<img src="img/kubernetes-default-communication-single-ns.gif" width="60%" height="60%" />](img/kubernetes-default-communication-single-ns.gif)
 
 ## default network communication across different Namespaces
-[<img src="img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](img/kubernetes-default-communication-multiple-ns.gif)
+[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
 
 ## Demo
 
