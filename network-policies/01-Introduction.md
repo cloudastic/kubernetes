@@ -23,13 +23,13 @@ In this section, you will learn about,
   * Use-cases
   * Network Policy tips & tricks
 
-All the explanations are covered with with a use-case scenario that helps gain deeper understanding of the concepts. 
+All the explanations are covered with a use-case scenario that helps gain deeper understanding of the concepts. 
 
 We will start with basics and slowly work our way from the default kubernetes network communication and move towards applying the Network policies (case-by-case) with examples. 
 
 Something from this., 
 
-[<img src="./img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](./img/kubernetes-default-communication-multiple-ns.gif)
+[<img src="./img/kubernetes-default-communication.gif" width="80%" />](./img/kubernetes-default-communication.gif)
 
 to this at the end.
 

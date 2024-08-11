@@ -36,29 +36,29 @@ EOF
 
 Now lets try to connect to the `frontend` pod from both the `middleware` and `mysql` pod.
 
-## Test the Ingress to `frontend`
+## Test Ingress to `frontend` namespace
 ```
-# [Test Ingress from 'middleware' to 'webapp' pod]
+# Test Ingress from 'middleware' to 'webapp' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 
-# [Test Ingress from 'mysql' to 'webapp' pod]
+# Test Ingress from 'mysql' to 'webapp' pod
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 ```
 
 Both the ingress requests have now timed out, clearly indicating that incoming traffic to the `frontend` namespace is blocked. Let us now try to establish outbound connection from the `webapp` pod in the `frontend` namespace to other pods in `middleware` and `backend` namespace.
 
 
-## Test the Egress from `frontend`
+## Test Egress from `frontend` namespace
 ```
-# [Test Egress from 'webapp' to 'middleware' pod]
+# Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 
-# [Test Egress from 'webapp' to 'mysql' pod]
+# Test Egress from 'webapp' to 'mysql' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 
 ```
 
-Well, the outbound connections from the `middleware` pod is working without any issues. 
+Well, the outbound connections from the `frontend` pod is working without any issues. 
 How do we restrict the Outbound connections then ? 
 Its done through the Network Policy with the policy type set to 'egress'.
 
