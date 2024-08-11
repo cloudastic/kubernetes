@@ -1,4 +1,4 @@
-# Default deny all ingress traffic
+# Deny ingress on frontend namespace
 
 ## CNI Plugins
 Before delving into the Network Policies in Kubernetes, we should briefly learn about the `CNI (Container Network Interface) Plugins`
