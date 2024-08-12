@@ -58,6 +58,11 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wid
 
 ```
 
+Alternatively, use our shell script to quickly check the same,
+
+[<img src="img/connectivity-check-deny-ingress-to-frontend-ns.jpg" />](img/connectivity-check-deny-ingress-to-frontend-ns.jpg)
+
+
 Well, the outbound connections from the `frontend` pod is working without any issues. 
 How do we restrict the Outbound connections then ? 
 Its done through the Network Policy with the policy type set to 'egress'.

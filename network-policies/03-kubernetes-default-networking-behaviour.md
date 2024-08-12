@@ -5,9 +5,6 @@
 * A container within a multi-container pod can reach other containers within the pod through `localhost`.
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
-## default network communication within single Namespace
-[<img src="img/kubernetes-default-communication-single-ns.gif" width="60%" height="60%" />](img/kubernetes-default-communication-single-ns.gif)
-
 ## default network communication across different Namespaces
 [<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
 
@@ -54,8 +51,10 @@ kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n f
 This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster. The same is true even if all these pods co-exists in the same namespace or its spread across different nodes that form a cluster.
 
 Note: 
-Instead of running the `kubectl` commands several times to test the inbound and outbound connections, You could use the below shell script that checks the connectivity and produces the output. 
+Instead of running the `kubectl` commands several times to test the inbound and outbound connections, You could use the below shell script that does the same, 
 
+
+## validate_connectivity.sh
 ```
 #!/bin/bash
 
@@ -83,7 +82,7 @@ done
 echo -e "\n\n"
 ```
 
-It produces the output like this, 
+and produces output like this, 
 
 
 [<img src="img/connectivity-check-script-output.jpg" />](img/connectivity-check-script-output.jpg)
