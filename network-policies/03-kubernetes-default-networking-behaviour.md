@@ -53,6 +53,38 @@ kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n f
 
 This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster. The same is true even if all these pods co-exists in the same namespace or its spread across different nodes that form a cluster.
 
+Note: 
+Instead of running the `kubectl` commands several times to test the inbound and outbound connections, You could use the below shell script that checks the connectivity and produces the output. 
+
+```
+#!/bin/bash
+
+BOLD='\033[1m'
+UL='\033[4m'
+BG_RED='\033[41m'
+BG_GREEN='\033[42m'
+RESET='\033[0m'
+
+array=("frontend:webapp:middleware:middleware" "frontend:webapp:backend:mysql" "middleware:middleware:frontend:webapp" "middleware:middleware:backend:mysql" "backend:mysql:frontend:webapp" "backend:mysql:middleware:middleware" )
+
+echo -e "\n\n${BOLD}${UL}############ Validating connectivity between pods across the namespace ############${RESET}\n"
+for element in "${array[@]}"; do
+    IFS=':' read -r -a parts <<< "$element"
+
+    echo "kubectl exec -it -n ${parts[0]} ${parts[1]} -- curl -s -m 2 \$(kubectl get pods ${parts[3]} -o wide -n ${parts[2]} -o jsonpath=\"{.status.podIP}\")"
+    kubectl exec -it -n ${parts[0]} ${parts[1]} -- curl -s -m 2 $(kubectl get pods ${parts[3]} -o wide -n ${parts[2]} -o jsonpath="{.status.podIP}")
+    if [ $? -eq 0 ]; then
+    echo -e "${BG_GREEN}INFO : ${RESET} Connection from '${parts[0]}':'${parts[1]}' ==> '${parts[2]}':'${parts[3]}' Successful!"
+        else
+    echo -e "${BG_RED}ERROR : ${RESET} Connection from '${parts[0]}':'${parts[1]}' ==> '${parts[2]}':'${parts[3]}' failed."
+        fi
+    echo "---------------------------"
+done
+echo -e "\n\n"
+```
+
+It produces the output like this, 
 
 
+[<img src="img/connectivity-check-script-output.jpg" width="60%" height="60%" />](img/connectivity-check-script-output.jpg)
 
