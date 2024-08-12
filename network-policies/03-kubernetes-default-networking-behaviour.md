@@ -86,5 +86,5 @@ echo -e "\n\n"
 It produces the output like this, 
 
 
-[<img src="img/connectivity-check-script-output.jpg" width="60%" height="60%" />](img/connectivity-check-script-output.jpg)
+[<img src="img/connectivity-check-script-output.jpg" />](img/connectivity-check-script-output.jpg)
 
