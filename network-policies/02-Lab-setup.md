@@ -22,7 +22,7 @@ minikube start --network-plugin=cni --cni=$HOME/Cloudastic/k8s/Network-Policies/
 
 Now lets create the kubernetes resources as outlined in the diagram below,
 
-[<img src="img/Cluster-setup-with-3-namespaces.png" width="80%" />](img/Cluster-setup-with-3-namespaces.png)
+[<img src="img/Cluster-setup.jpg" width="80%" />](img/Cluster-setup.jpg)
 
 ### Create Namespaces ###
 ```

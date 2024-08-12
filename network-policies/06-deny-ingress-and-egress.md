@@ -64,3 +64,6 @@ kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o 
 
 We have now restricted both the `ingress` and `egress` traffic across all these namespaces. 
 
+[<img src="img/connectivity-check-deny-ingress-and-egress.jpg" />](img/connectivity-check-deny-ingress-and-egress.jpg)
+
+

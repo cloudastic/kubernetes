@@ -1,4 +1,4 @@
-# Deny ingress and egress
+# Whitelist egress traffic
 
 In our last demo, We have applied two different network policies. One to restrict the incoming traffic and the other one to restrict the outbound traffic in the `frontend` namespace. 
 

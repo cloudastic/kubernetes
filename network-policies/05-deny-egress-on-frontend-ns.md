@@ -1,6 +1,6 @@
 # Deny egress on frontend namespace
 
-In our last demo, we have disabled the `ingress` on the `frontend` namespace., and now we are going to apply the `egress` network policy to restrict the outbound traffic from the `frontend` namespace. 
+In our last demo, we have restricted the `ingress` traffic to the `frontend` namespace., and now we are going to apply the `egress` network policy to restrict the outbound traffic from the `frontend` namespace. 
 
 After applying the below network policy, the pods within the `frontend` namespace is quarantined and wont be able to communicate with any pods on any other namespace. 
 
@@ -39,6 +39,8 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 
 ```
+
+[<img src="img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg" />](img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg)
 
 Since the requests timed out after 3 seconds, it confirms that out `egress` network policy is working as desired.
 
