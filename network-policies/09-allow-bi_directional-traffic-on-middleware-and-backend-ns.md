@@ -1,4 +1,4 @@
-# Allow "backend ==> middleware" communication
+# Allow "backend <==> middleware" communication
 
 In the earlier section, we have successfully enabled the communication between the `frontend` and the `middleware` namespace. In this section, we will create the Network Policies to enable the Bi-Directional communication between the `middleware` and the `backend` namespace., there by only allowing the `middleware` pod to talk to the `mysql` pod and vice-versa. By applying this policy, We 
 
