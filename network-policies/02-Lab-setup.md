@@ -11,7 +11,7 @@ __Note:__ We have used the most recent version v2.8.1 of 'Weave Net' available a
 ## Start your cluster ##
 * We need to explicitly specify the "CNI" whilst starting the minikube cluster by using the following command, 
 
-```
+```sh
 minikube start --network-plugin=cni --cni=$HOME/Cloudastic/k8s/Network-Policies/weave-daemonset-k8s.yaml --driver docker --mount=true --mount-string=$HOME/Cloudastic/k8s/Network-Policies/:/minikube-host
 ```
 
@@ -25,14 +25,14 @@ Now lets create the kubernetes resources as outlined in the diagram below,
 [<img src="img/cluster-setup.jpg" width="80%" />](img/cluster-setup.jpg)
 
 ### Create Namespaces ###
-```
+```sh
 kubectl create ns frontend
 kubectl create ns middleware
 kubectl create ns backend
 ```
 
 ### Create Pods
-```
+```sh
 kubectl run webapp --image=nginx -n frontend
 kubectl run middleware --image=nginx -n middleware
 kubectl run mysql --image=nginx -n backend
@@ -40,7 +40,7 @@ kubectl run mysql --image=nginx -n backend
 
 ### Update the default index page for ease of identification
 In this step we are modifying the default index pages of the nginx for easy identification. 
-```
+```sh
 kubectl exec -it -n frontend webapp -- /bin/bash -c "echo Frontend > /usr/share/nginx/html/index.html"
 kubectl exec -it -n middleware middleware -- /bin/bash -c "echo Middleware > /usr/share/nginx/html/index.html"
 kubectl exec -it -n backend mysql -- /bin/bash -c "echo Backend > /usr/share/nginx/html/index.html"

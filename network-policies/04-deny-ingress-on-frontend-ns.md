@@ -21,7 +21,7 @@ Let us now block all the incoming traffic 'ingress' to the `frontend` namespace.
 [<img src="img/deny-incoming-traffic-to-frontend-namespace.gif" width="80%" />](img/deny-incoming-traffic-to-frontend-namespace.gif.gif)
 
 ### Deny all ingress traffic to frontend namespace
-```
+```yaml
 cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -37,7 +37,7 @@ EOF
 Now lets try to connect to the `frontend` pod from both the `middleware` and `mysql` pod.
 
 ## Test Ingress to `frontend` namespace
-```
+```sh
 # Test Ingress from 'middleware' to 'webapp' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 
@@ -49,7 +49,7 @@ Both the ingress requests have now timed out, clearly indicating that incoming t
 
 
 ## Test Egress from `frontend` namespace
-```
+```sh
 # Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 

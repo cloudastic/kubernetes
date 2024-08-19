@@ -7,7 +7,7 @@ The same could be accomplished using a single network policy to restrict both th
 [<img src="img/deny-ingress-and-egress.gif" width="80%" />](img/deny-ingress-and-egress.gif)
 
 ### Deny both ingress and egress on middleware namespace
-```
+```yaml
 cat <<EOF | kubectl create -n middleware -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -22,7 +22,7 @@ EOF
 ```
 
 ### Deny both ingress and egress on backend namespace
-```
+```yaml
 cat <<EOF | kubectl create -n backend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -37,7 +37,7 @@ EOF
 ```
 
 Verify if the Network Policies are created
-```
+```sh
 kubectl get netpol default-deny -n middleware
 
 kubectl describe netpol default-deny -n middleware
@@ -53,7 +53,7 @@ Let's test the connectivity between the pods across all these namespaces, (Since
 
 ## Test Egress from frontend namespace
 
-```
+```sh
 # Test Egress from 'middleware' to 'backend' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 

@@ -7,13 +7,13 @@ We can simplify the process futher by combining the `ingress` and `egress` rules
 [<img src="img/allow-bidirectional-traffic-between-frontend-and-middleware.gif" width="80%" />](img/allow-bidirectional-traffic-between-frontend-and-middleware.gif)
 
 ### Delete the Network Policies created in the previous chapter
-```
+```sh
 kubectl delete netpol -n middleware mw-to-fe-allow-ingress
 kubectl delete netpol -n frontend fe-to-mw-allow-egress
 ```
 
 ### Allow Ingress & Egress on middleware to frontend
-```
+```yaml
 cat <<EOF | kubectl create -n middleware -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -44,7 +44,7 @@ EOF
 
 ### Allow Ingress & Egress on frontend to middleware
 
-```
+```yaml
 cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

@@ -27,7 +27,7 @@ EOF
 ```
 
 ### Allow Egress from frontend to middleware
-```
+```yaml
 cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

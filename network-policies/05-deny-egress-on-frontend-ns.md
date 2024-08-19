@@ -7,7 +7,7 @@ After applying the below network policy, the pods within the `frontend` namespac
 [<img src="img/deny-ingress-egress-on-frontend-ns.gif" width="80%" />](img/deny-ingress-egress-on-frontend-ns.gif)
 
 ### Deny all egress traffic from frontend namespace
-```
+```yaml
 cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -22,7 +22,7 @@ EOF
 
 Check if you are able to see both the Network policies applied to the `frontend` namespace,
 
-```
+```sh
 kubectl get netpol -n frontend
 ```
 
@@ -31,7 +31,7 @@ Let us now verify the outbound connectivity from the `frontend` namespace,
 
 ## Test Egress from frontend namespace
 
-```
+```sh
 # Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 

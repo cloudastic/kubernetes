@@ -5,7 +5,7 @@ In the earlier section, we have applied the `default deny` network policies on a
 [<img src="img/allow-frontend-to-middleware.gif" width="80%" />](img/allow-frontend-to-middleware.gif)
 
 ### Allow Ingress from middleware to frontend
-```
+```yaml
 cat <<EOF | kubectl create -n middleware -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -27,7 +27,7 @@ EOF
 ```
 
 ### Allow Egress from frontend to middleware
-```
+```yaml
 cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

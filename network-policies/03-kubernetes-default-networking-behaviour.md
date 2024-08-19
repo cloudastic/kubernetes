@@ -55,7 +55,7 @@ Instead of running the `kubectl` commands several times to test the inbound and 
 
 
 ## validate_connectivity.sh
-```
+```bash
 #!/bin/bash
 
 BOLD='\033[1m'
