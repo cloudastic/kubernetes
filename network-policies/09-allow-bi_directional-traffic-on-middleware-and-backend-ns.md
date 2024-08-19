@@ -5,7 +5,7 @@ In the earlier section, we have successfully enabled the communication between t
 [<img src="img/allow-middleware-to-backend.gif" width="80%" />](img/allow-middleware-to-backend.gif)
 
 ### Allow Ingress from middleware to frontend
-```
+```yaml
 cat <<EOF | kubectl create -n middleware -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
