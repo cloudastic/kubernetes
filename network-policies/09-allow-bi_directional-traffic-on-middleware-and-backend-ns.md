@@ -1,16 +1,17 @@
 # Allow "backend <==> middleware" communication
 
-In the earlier section, we have successfully enabled the communication between the `frontend` and the `middleware` namespace. In this section, we will create the Network Policies to enable the Bi-Directional communication between the `middleware` and the `backend` namespace., there by only allowing the `middleware` pod to talk to the `mysql` pod and vice-versa. By applying this policy, We 
+In the earlier section, we have successfully enabled the communication between the `frontend` and the `middleware` namespace. In this section, we will create the Network Policies to enable the Bi-directional communication between the `middleware` and the `backend` namespace., there by only allowing the `middleware` pod to talk to the `mysql` pod and vice-versa. By applying this policy, we result in the below, 
 
 [<img src="img/allow-middleware-to-backend.gif" width="80%" />](img/allow-middleware-to-backend.gif)
 
-### Allow Ingress from middleware to frontend
+
+### Allow Ingress & Egress on middleware to backend
 ```yaml
 cat <<EOF | kubectl create -n middleware -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: mw-to-fe-allow-ingress
+  name: mw-to-be-allow-ingress-and-egress
 spec:
   podSelector: 
     matchLabels:
@@ -19,30 +20,47 @@ spec:
     - from:
       - namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: frontend
+            kubernetes.io/metadata.name: backend
         podSelector: 
           matchLabels:
-            run: webapp
+            run: mysql
+  egress:
+    - to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: backend
+        podSelector: 
+          matchLabels:
+            run: mysql
 EOF
 ```
 
-### Allow Egress from frontend to middleware
+### Allow Ingress & Egress on backend to middleware
+
 ```yaml
-cat <<EOF | kubectl create -n frontend -f -
+cat <<EOF | kubectl create -n backend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: fe-to-mw-allow-egress
+  name: be-to-mw-allow-egress-and-egress
 spec:
   podSelector: 
     matchLabels:
-      run: webapp
+      run: mysql
   egress:
     - to:
       - namespaceSelector: 
           matchLabels:
             kubernetes.io/metadata.name: middleware	  
         podSelector:
+          matchLabels:
+            run: middleware
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: middleware
+        podSelector: 
           matchLabels:
             run: middleware
 EOF
