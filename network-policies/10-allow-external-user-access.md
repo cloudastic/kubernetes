@@ -57,7 +57,7 @@ Once the changes are made, the resulting network policy should look like below,
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: fe-to-mw-allow-egress-and-ingress
+  name: fe-to-mw-allow-ingress-and-egress
   namespace: frontend
 spec:
   egress:
