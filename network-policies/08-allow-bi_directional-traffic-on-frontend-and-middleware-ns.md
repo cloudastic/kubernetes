@@ -49,7 +49,7 @@ cat <<EOF | kubectl create -n frontend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: fe-to-mw-allow-egress-and-egress
+  name: fe-to-mw-allow-ingress-and-egress
 spec:
   podSelector: 
     matchLabels:
