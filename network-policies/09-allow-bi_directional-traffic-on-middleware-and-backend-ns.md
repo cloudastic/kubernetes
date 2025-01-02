@@ -42,7 +42,7 @@ cat <<EOF | kubectl create -n backend -f -
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: be-to-mw-allow-egress-and-egress
+  name: be-to-mw-allow-ingress-and-egress
 spec:
   podSelector: 
     matchLabels:
