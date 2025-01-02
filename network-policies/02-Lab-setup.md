@@ -12,7 +12,7 @@ __Note:__ We have used the most recent version v2.8.1 of 'Weave Net' available a
 * We need to explicitly specify the "CNI" whilst starting the minikube cluster by using the following command, 
 
 ```sh
-minikube start --network-plugin=cni --cni=$HOME/Cloudastic/k8s/Network-Policies/weave-daemonset-k8s.yaml --driver docker --mount=true --mount-string=$HOME/Cloudastic/k8s/Network-Policies/:/minikube-host
+minikube start --network-plugin=cni --cni=$HOME/Cloudastic/k8s/Network-Policies/weave-daemonset-k8s.yaml --driver=docker --mount=true --mount-string=$HOME/Cloudastic/k8s/Network-Policies/:/minikube-host
 ```
 
 * Do not forget to replace the path in the '--cni' and the '--mount-string' sections to match your local set-up. 
