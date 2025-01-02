@@ -38,7 +38,7 @@ curl http://$(minikube ip):30080
 ```
 
 Well the connection didn't work. Is that expected ? Yes
-Why ?  Because we do hae a default deny network policy restrict the traffic and that needs to be tweaked to allow access. We can achieve it by modifying the `fe-to-mw-allow-egress-and-ingress` Network policy on the `frontend` namespace. We need to amend another ingress rule to this policy to make it work. 
+Why ?  Because we do have a default deny network policy restrict the traffic and that needs to be tweaked to allow access. We can achieve it by modifying the `fe-to-mw-allow-egress-and-ingress` Network policy on the `frontend` namespace. We need to amend another ingress rule to this policy to make it work. 
 
 ### Amend another Ingress rule to the existing Policy to allow traffic
 
