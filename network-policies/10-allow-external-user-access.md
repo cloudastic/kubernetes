@@ -24,17 +24,17 @@ spec:
 EOF
 ```
 
-### Verify the NdoePort service
+### Verify the NodePort service
 
 ```yaml
 kubectl get svc -n frontend
 ```
 
-Now let us access the NodePort service to check if the service is accessible.
-Note: `minikube ip` command will provide the node IP address that you could use to access the Nodeport service.
+Now let us access the NodePort service to check if the service is accessible.<br>
+Note: Since we are using minikube for our Lab environment, we need to create a tunnel for the newly created service to be accessed outside.  The following command will expose the NodePort service to be accessible outside the Minikube cluster.
 
 ```sh
-curl http://$(minikube ip):30080
+minikube service frontend-svc --url
 ```
 
 Well the connection didn't work. Is that expected ? Yes
