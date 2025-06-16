@@ -14,7 +14,7 @@ Now that we have already created the necessary resources, lets try to establish 
 
 ## Check the IP Address of each pods
 ```
-kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system
+kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
 ```
 Notice that each pods are assigned with a unique IP address. 
 
