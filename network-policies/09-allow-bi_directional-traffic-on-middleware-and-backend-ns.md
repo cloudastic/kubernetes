@@ -66,6 +66,10 @@ spec:
 EOF
 ```{{exec}}
 
+```bash
+./validate_connectivity.sh
+```{{exec}}
+
 Note: We need to enable the `ingress` on the middleware and the `egress` on the frontend namespace to allow the communication to happen. 
 
 Lets validate the connectivity. 
