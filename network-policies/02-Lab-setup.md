@@ -30,14 +30,14 @@ kubectl create ns frontend
 kubectl create ns middleware
 kubectl create ns backend
 ```{{exec}}
-```
+
 ### Create Pods
 ```sh
 kubectl run webapp --image=nginx -n frontend
 kubectl run middleware --image=nginx -n middleware
 kubectl run mysql --image=nginx -n backend
 ```{{exec}}
-```
+
 
 ### Update the default index page for ease of identification
 
@@ -46,7 +46,7 @@ Verify the resources that we have created,
 ```plain
 kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
 ```{{exec}}
-```
+
 Execute the below commands only after the pods are reporting 'Running' status. 
 
 Update the default index page for ease of identification
