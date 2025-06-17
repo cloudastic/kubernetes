@@ -4,7 +4,7 @@ In our last demo, We have applied two different network policies. One to restric
 
 The same could be accomplished using a single network policy to restrict both the ingress and egress. In this demo, we will restrict the all the inbound and outbound traffic for the `middleware` and `backend` namespaces.
 
-[<img src="img/deny-ingress-and-egress.gif" width="80%" />](img/deny-ingress-and-egress.gif)
+[<img src="./img/deny-ingress-and-egress.gif" width="80%" />](./img/deny-ingress-and-egress.gif)
 
 ### Deny both ingress and egress on middleware namespace
 ```yaml
@@ -19,7 +19,7 @@ spec:
   - Ingress
   - Egress
 EOF
-```
+```{{exec}}
 
 ### Deny both ingress and egress on backend namespace
 ```yaml
@@ -34,7 +34,7 @@ spec:
   - Ingress
   - Egress
 EOF
-```
+```{{exec}}
 
 Verify if the Network Policies are created
 ```sh
@@ -45,7 +45,7 @@ kubectl describe netpol default-deny -n middleware
 kubectl get netpol default-deny -n backend
 
 kubectl describe netpol default-deny -n backend
-```
+```{{exec}}
 
 Whilst describing the NetworkPolicy, notice that the Policy type reflects both the `Policy Types: Ingress, Egress`. 
 
@@ -59,11 +59,10 @@ kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql 
 
 # Test Egress from 'mysql' to 'middleware' pod
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-
-```
+```{{exec}}
 
 We have now restricted both the `ingress` and `egress` traffic across all these namespaces. 
 
-[<img src="img/connectivity-check-deny-ingress-and-egress.jpg" />](img/connectivity-check-deny-ingress-and-egress.jpg)
+[<img src="./img/connectivity-check-deny-ingress-and-egress.jpg" />](./img/connectivity-check-deny-ingress-and-egress.jpg)
 
 
