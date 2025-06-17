@@ -39,17 +39,27 @@ kubectl run mysql --image=nginx -n backend
 ```{{exec}}
 
 ### Update the default index page for ease of identification
-In this step we are modifying the default index pages of the nginx for easy identification. 
-```sh
+
+Verify the resources that we have created,
+
+```plain
+kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
+```{{exec}}
+
+Execute the below commands only after the pods are reporting 'Running' status. 
+
+Update the default index page for ease of identification
+
+In this step we are modifying the default index pages of the nginx for easy identification.
+
+```plain
 kubectl exec -it -n frontend webapp -- /bin/bash -c "echo Frontend > /usr/share/nginx/html/index.html"
 ```{{exec}}
 
-```sh
+```plain
 kubectl exec -it -n middleware middleware -- /bin/bash -c "echo Middleware > /usr/share/nginx/html/index.html"
 ```{{exec}}
 
-```sh
+```plain
 kubectl exec -it -n backend mysql -- /bin/bash -c "echo Backend > /usr/share/nginx/html/index.html"
 ```{{exec}}
-
-
