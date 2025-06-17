@@ -15,39 +15,38 @@ Now that we have already created the necessary resources, lets try to establish 
 ## Check the IP Address of each pods
 ```plain
 kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
-```
-<!-- {{exec}} -->
+```{{exec}}
 Notice that each pods are assigned with a unique IP address. 
 
 ## Connect from webapp to middleware pod
 ```plain
 kubectl exec -it -n frontend webapp -- curl $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ## Connect from webapp to mysql pod
 ```plain
 kubectl exec -it -n frontend webapp -- curl $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ## Connect from middleware to webapp pod
 ```plain
 kubectl exec -it -n middleware middleware -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ## Connect from middleware to mysql pod
 ```plain
 kubectl exec -it -n middleware middleware -- curl $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ## Connect from mysql to middleware pod
 ```plain
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ## Connect from mysql to webapp pod
 ```plain
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 This demonstrates that we can establish connections between any pods in any namespaces across the entire cluster. The same is true even if all these pods co-exists in the same namespace or its spread across different nodes that form a cluster.
 
@@ -86,12 +85,11 @@ for element in "${array[@]}"; do
 done
 
 echo -e "\n\n"
-```
-<pre>
+```{{exec}}
+
 ```bash
 ./validate_connectivity.sh
 ```{{exec}}
-</pre>
 
 and produces output like this, 
 
