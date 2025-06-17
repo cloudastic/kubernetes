@@ -50,7 +50,11 @@ EOF
 
 Note: We need to enable the `ingress` on the middleware and the `egress` on the frontend namespace to allow the communication to happen. 
 
-Lets validate the connectivity. 
+Lets validate the connectivity.
+
+```bash
+./validate_connectivity.sh
+```{{exec}}
 
 [<img src="./img/connectivity-check-middleware-to-frontend-ns.jpg" />](./img/connectivity-check-middleware-to-frontend-ns.jpg)
 
