@@ -27,8 +27,11 @@ kubectl run mysql --image=nginx -n backend
 
 Verify the resources that we have created,
 
-```plain
-kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
+```sh
+until [ `kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane | grep -w "Running" | wc -l` -eq 3 ] ; do
+  echo "Wait until resources are being created"
+  sleep 1
+done
 ```{{exec}}
 
 Execute the below commands only after the pods are reporting 'Running' status. 
