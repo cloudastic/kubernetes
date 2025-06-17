@@ -34,7 +34,9 @@ Let us now verify the outbound connectivity from the `frontend` namespace,
 ```sh
 # Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
+```{{exec}}
 
+```sh
 # Test Egress from 'webapp' to 'mysql' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 ```{{exec}}
