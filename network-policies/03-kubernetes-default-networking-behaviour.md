@@ -6,7 +6,7 @@
 * By default, All Inbound and Outbound connections are allowed for a Pod.
 
 ## default network communication across different Namespaces
-[<img src="img/kubernetes-default-communication.gif" width="80%" />](img/kubernetes-default-communication.gif)
+[<img src="./img/kubernetes-default-communication.gif" width="80%" />](./img/kubernetes-default-communication.gif)
 
 ## Demo
 
@@ -91,5 +91,5 @@ echo -e "\n\n"
 and produces output like this, 
 
 
-[<img src="img/connectivity-check-script-output.jpg" />](img/connectivity-check-script-output.jpg)
+[<img src="./img/connectivity-check-script-output.jpg" />](./img/connectivity-check-script-output.jpg)
 
