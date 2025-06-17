@@ -39,6 +39,10 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 ```{{exec}}
 
+```bash
+./validate_connectivity.sh
+```{{exec}}
+
 [<img src="./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg)
 
 Since the requests timed out after 3 seconds, it confirms that out `egress` network policy is working as desired.
