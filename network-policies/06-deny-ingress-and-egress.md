@@ -39,11 +39,17 @@ EOF
 Verify if the Network Policies are created
 ```sh
 kubectl get netpol default-deny -n middleware
+```{{exec}}
 
+```sh
 kubectl describe netpol default-deny -n middleware
+```{{exec}}
 
+```sh
 kubectl get netpol default-deny -n backend
+```{{exec}}
 
+```sh
 kubectl describe netpol default-deny -n backend
 ```{{exec}}
 
@@ -56,7 +62,9 @@ Let's test the connectivity between the pods across all these namespaces, (Since
 ```sh
 # Test Egress from 'middleware' to 'backend' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
+```{{exec}}
 
+```sh
 # Test Egress from 'mysql' to 'middleware' pod
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 ```{{exec}}
