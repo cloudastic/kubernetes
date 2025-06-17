@@ -2,7 +2,7 @@
 
 Let us now allow external users to access the webapp pod in the frontend namespace by exposing it through a NodePort service. While doing that, we will learn about adding multiple network policy rules and allowing access to IP Range and specific ports. 
 
-[<img src="img/allow-external-user-access-via-nodeport-svc.gif" width="80%" />](img/allow-external-user-access-via-nodeport-svc.gif)
+[<img src="./img/allow-external-user-access-via-nodeport-svc.gif" width="80%" />](./img/allow-external-user-access-via-nodeport-svc.gif)
 
 
 ### Create NodePort Service to expose Webapp pod
@@ -22,7 +22,7 @@ spec:
       nodePort: 30080   # Expose the service on this node port externally
   type: NodePort        # set NodePort type to make the service accessible externally
 EOF
-```
+```{{exec}}
 
 ### Verify the NodePort service
 
@@ -35,7 +35,7 @@ Note: Since we are using minikube for our Lab environment, we need to create a t
 
 ```sh
 minikube service frontend-svc --url
-```
+```{{exec}}
 
 Well the connection didn't work. Is that expected ? Yes
 Why ?  Because we do have a default deny network policy restrict the traffic and that needs to be tweaked to allow access. We can achieve it by modifying the `fe-to-mw-allow-egress-and-ingress` Network policy on the `frontend` namespace. We need to amend another ingress rule to this policy to make it work. 
