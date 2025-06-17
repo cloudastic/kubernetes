@@ -87,6 +87,10 @@ done
 echo -e "\n\n"
 ```{{exec}}
 
+```bash
+./validate_connectivity.sh
+```{{exec}}
+
 and produces output like this, 
 
 
