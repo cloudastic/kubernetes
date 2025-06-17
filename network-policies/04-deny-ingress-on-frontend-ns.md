@@ -1,5 +1,5 @@
 # Deny ingress on frontend namespace
-<br>
+
 ## CNI Plugins
 Before delving into the Network Policies in Kubernetes, we should briefly learn about the `CNI (Container Network Interface) Plugins`
 * You need a `CNI Plugin` installed on the Cluster for the Network Policies to take effect. 
