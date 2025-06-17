@@ -30,12 +30,8 @@ EOF
 kubectl get svc -n frontend
 ```
 
-Now let us access the NodePort service to check if the service is accessible.<br>
-Note: Since we are using minikube for our Lab environment, we need to create a tunnel for the newly created service to be accessed outside.  The following command will expose the NodePort service to be accessible outside the Minikube cluster.
-
-```sh
-minikube service frontend-svc --url
-```{{exec}}
+Now let us access the NodePort service.
+[click here]({{TRAFFIC_HOST1_30080}}) to check if the service is accessible.
 
 Well the connection didn't work. Is that expected ? Yes
 Why ?  Because we do have a default deny network policy restrict the traffic and that needs to be tweaked to allow access. We can achieve it by modifying the `fe-to-mw-allow-egress-and-ingress` Network policy on the `frontend` namespace. We need to amend another ingress rule to this policy to make it work. 
@@ -94,4 +90,4 @@ spec:
 ./validate_connectivity.sh
 ```{{exec}}
 
-Now try and access the NodePort service using the command `curl http://$(minikube ip):30080` and notice the connection works. 
+Now try and access the NodePort service by [clicking on this link]({{TRAFFIC_HOST1_30080}}). If the connection is successful, you should see 'frontend' text on this page. 
