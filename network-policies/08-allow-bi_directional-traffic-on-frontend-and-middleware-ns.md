@@ -73,7 +73,11 @@ spec:
 EOF
 ```{{exec}}
 
-We have combined both the `ingress` and the `egress` rules in a single Network policy and applied the same on both the namespaces. 
+We have combined both the `ingress` and the `egress` rules in a single Network policy and applied the same on both the namespaces.
+
+```bash
+./validate_connectivity.sh
+```{{exec}}
 
 [<img src="./img/connectivity-check-frontend-and-middleware.jpg" />](./img/connectivity-check-frontend-and-middleware.jpg)
 
