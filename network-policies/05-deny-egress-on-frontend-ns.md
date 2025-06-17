@@ -4,7 +4,7 @@ In our last demo, we have restricted the `ingress` traffic to the `frontend` nam
 
 After applying the below network policy, the pods within the `frontend` namespace is quarantined and wont be able to communicate with any pods on any other namespace. 
 
-[<img src="img/deny-ingress-egress-on-frontend-ns.gif" width="80%" />](img/deny-ingress-egress-on-frontend-ns.gif)
+[<img src="./img/deny-ingress-egress-on-frontend-ns.gif" width="80%" />](./img/deny-ingress-egress-on-frontend-ns.gif)
 
 ### Deny all egress traffic from frontend namespace
 ```yaml
@@ -40,7 +40,7 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wid
 
 ```
 
-[<img src="img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg" />](img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg)
+[<img src="./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg)
 
 Since the requests timed out after 3 seconds, it confirms that out `egress` network policy is working as desired.
 
