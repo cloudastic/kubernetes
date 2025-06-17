@@ -57,4 +57,4 @@ In this step we are modifying the default index pages of the nginx for easy iden
 kubectl exec -it -n frontend webapp -- /bin/bash -c "echo Frontend > /usr/share/nginx/html/index.html"
 kubectl exec -it -n middleware middleware -- /bin/bash -c "echo Middleware > /usr/share/nginx/html/index.html"
 kubectl exec -it -n backend mysql -- /bin/bash -c "echo Backend > /usr/share/nginx/html/index.html"
-```{{exec}}
+```{{copy}}
