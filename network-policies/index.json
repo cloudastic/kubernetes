@@ -13,17 +13,17 @@
       {
         "title": "Kubernetes default network behaviour",
         "text": "03-kubernetes-default-networking-behaviour.md",
-         "background": "./assets/scripts/background.sh"
+         "background": "validate_connectivity.sh"
       },
       {
         "title": "Deny ingress on frontend namespace",
         "text": "04-deny-ingress-on-frontend-ns.md",
-        "background": "./assets/scripts/background.sh"
+        "background": "./validate_connectivity.sh"
       },
       {
         "title": "Deny egress on frontend namespace",
         "text": "05-deny-egress-on-frontend-ns.md",
-        "background": "./assets/scripts/background.sh"
+        "background": "validate_connectivity.sh"
       },
       {
         "title": "Deny ingress and egress",
