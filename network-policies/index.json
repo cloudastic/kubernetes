@@ -1,0 +1,50 @@
+{
+  "title": "Kubetnetes Network Policies",
+  "description": "Kubetnetes Network Policies",
+  "details": {
+    "intro": {
+      "text": "01-Introduction.md"
+    },
+    "steps": [
+      {
+        "title": "Network Policies Lab Setup",
+        "text": "02-Lab-setup.md"
+      },
+      {
+        "title": "Kubernetes default network behaviour",
+        "text": "03-kubernetes-default-networking-behaviour.md"
+      },
+      {
+        "title": "Deny ingress on frontend namespace",
+        "text": "04-deny-ingress-on-frontend-ns.md"
+      },
+      {
+        "title": "Deny egress on frontend namespace",
+        "text": "05-deny-egress-on-frontend-ns.md"
+      },
+      {
+        "title": "Deny ingress and egress",
+        "text": "06-deny-ingress-and-egress.md"
+      },
+      {
+        "title": "Allow 'frontend ==> middleware' communication",
+        "text": "07-allow-frontend-to-middleware-ns.md"
+      },
+      {
+        "title": "Allow 'frontend <==> middleware' communication",
+        "text": "08-allow-bi_directional-traffic-on-frontend-and-middleware-ns.md"
+      },
+      {
+        "title": "Allow 'backend <==> middleware' communication",
+        "text": "09-allow-bi_directional-traffic-on-middleware-and-backend-ns.md"
+      },
+      {
+        "title": "Allow External user access",
+        "text": "10-allow-external-user-access.md"
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
