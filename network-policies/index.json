@@ -12,35 +12,43 @@
       },
       {
         "title": "Kubernetes default network behaviour",
-        "text": "03-kubernetes-default-networking-behaviour.md"
+        "text": "03-kubernetes-default-networking-behaviour.md",
+         "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Deny ingress on frontend namespace",
-        "text": "04-deny-ingress-on-frontend-ns.md"
+        "text": "04-deny-ingress-on-frontend-ns.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Deny egress on frontend namespace",
-        "text": "05-deny-egress-on-frontend-ns.md"
+        "text": "05-deny-egress-on-frontend-ns.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Deny ingress and egress",
-        "text": "06-deny-ingress-and-egress.md"
+        "text": "06-deny-ingress-and-egress.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Allow 'frontend ==> middleware' communication",
-        "text": "07-allow-frontend-to-middleware-ns.md"
+        "text": "07-allow-frontend-to-middleware-ns.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Allow 'frontend <==> middleware' communication",
-        "text": "08-allow-bi_directional-traffic-on-frontend-and-middleware-ns.md"
+        "text": "08-allow-bi_directional-traffic-on-frontend-and-middleware-ns.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Allow 'backend <==> middleware' communication",
-        "text": "09-allow-bi_directional-traffic-on-middleware-and-backend-ns.md"
+        "text": "09-allow-bi_directional-traffic-on-middleware-and-backend-ns.md",
+        "background": "./assets/scripts/background.sh"
       },
       {
         "title": "Allow External user access",
-        "text": "10-allow-external-user-access.md"
+        "text": "10-allow-external-user-access.md",
+        "background": "./assets/scripts/background.sh"
       }
     ]
   },
