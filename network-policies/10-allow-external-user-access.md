@@ -90,4 +90,8 @@ spec:
   - Egress
 ```
 
+```bash
+./validate_connectivity.sh
+```{{exec}}
+
 Now try and access the NodePort service using the command `curl http://$(minikube ip):30080` and notice the connection works. 
