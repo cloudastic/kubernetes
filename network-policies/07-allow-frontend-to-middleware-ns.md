@@ -2,7 +2,7 @@
 
 In the earlier section, we have applied the `default deny` network policies on all the namespaces restricting both the inbound and outbound traffic. Now let us enable the `webapp` pod in the `frontend` namespace to talk to the `middleware` pod in the `middleware` namespace. 
 
-[<img src="img/allow-frontend-to-middleware.gif" width="80%" />](img/allow-frontend-to-middleware.gif)
+[<img src="./img/allow-frontend-to-middleware.gif" width="80%" />](./img/allow-frontend-to-middleware.gif)
 
 ### Allow Ingress from middleware to frontend
 ```yaml
@@ -24,7 +24,7 @@ spec:
           matchLabels:
             run: webapp
 EOF
-```
+```{{exec}}
 
 ### Allow Egress from frontend to middleware
 ```yaml
@@ -46,13 +46,13 @@ spec:
           matchLabels:
             run: middleware
 EOF
-```
+```{{exec}}
 
 Note: We need to enable the `ingress` on the middleware and the `egress` on the frontend namespace to allow the communication to happen. 
 
 Lets validate the connectivity. 
 
-[<img src="img/connectivity-check-middleware-to-frontend-ns.jpg" />](img/connectivity-check-middleware-to-frontend-ns.jpg)
+[<img src="./img/connectivity-check-middleware-to-frontend-ns.jpg" />](./img/connectivity-check-middleware-to-frontend-ns.jpg)
 
 
 
