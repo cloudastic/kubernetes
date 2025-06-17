@@ -9,6 +9,9 @@ We can simplify the process futher by combining the `ingress` and `egress` rules
 ### Delete the Network Policies created in the previous chapter
 ```sh
 kubectl delete netpol -n middleware mw-to-fe-allow-ingress
+```{{exec}}
+
+```sh
 kubectl delete netpol -n frontend fe-to-mw-allow-egress
 ```{{exec}}
 
