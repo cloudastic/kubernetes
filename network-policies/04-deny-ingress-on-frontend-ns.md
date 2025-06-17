@@ -59,6 +59,10 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wid
 
 Alternatively, use our shell script to quickly check the same,
 
+```bash
+./validate_connectivity.sh
+```{{exec}}
+
 [<img src="./img/connectivity-check-deny-ingress-to-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-to-frontend-ns.jpg)
 
 
