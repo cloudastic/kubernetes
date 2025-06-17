@@ -2,7 +2,7 @@
 
 In the earlier section, we have successfully enabled the communication between the `frontend` and the `middleware` namespace. In this section, we will create the Network Policies to enable the Bi-directional communication between the `middleware` and the `backend` namespace., there by only allowing the `middleware` pod to talk to the `mysql` pod and vice-versa. By applying this policy, we result in the below, 
 
-[<img src="img/allow-middleware-to-backend.gif" width="80%" />](img/allow-middleware-to-backend.gif)
+[<img src="./img/allow-middleware-to-backend.gif" width="80%" />](./img/allow-middleware-to-backend.gif)
 
 
 ### Allow Ingress & Egress on middleware to backend
@@ -33,7 +33,7 @@ spec:
           matchLabels:
             run: mysql
 EOF
-```
+```{{exec}}
 
 ### Allow Ingress & Egress on backend to middleware
 
@@ -64,13 +64,13 @@ spec:
           matchLabels:
             run: middleware
 EOF
-```
+```{{exec}}
 
 Note: We need to enable the `ingress` on the middleware and the `egress` on the frontend namespace to allow the communication to happen. 
 
 Lets validate the connectivity. 
 
-[<img src="img/connectivity-check-middleware-and-backend.jpg" />](img/connectivity-check-middleware-and-backend.jpg)
+[<img src="./img/connectivity-check-middleware-and-backend.jpg" />](./img/connectivity-check-middleware-and-backend.jpg)
 
 
 
