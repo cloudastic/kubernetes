@@ -61,7 +61,11 @@ kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql 
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 ```{{exec}}
 
-We have now restricted both the `ingress` and `egress` traffic across all these namespaces. 
+We have now restricted both the `ingress` and `egress` traffic across all these namespaces.
+
+```bash
+./validate_connectivity.sh
+```{{exec}}
 
 [<img src="./img/connectivity-check-deny-ingress-and-egress.jpg" />](./img/connectivity-check-deny-ingress-and-egress.jpg)
 
