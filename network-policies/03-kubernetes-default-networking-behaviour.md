@@ -86,10 +86,11 @@ done
 
 echo -e "\n\n"
 ```
-
+<pre>
 ```bash
 ./validate_connectivity.sh
 ```{{exec}}
+</pre>
 
 and produces output like this, 
 
