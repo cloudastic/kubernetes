@@ -18,7 +18,7 @@ Before delving into the Network Policies in Kubernetes, we should briefly learn 
 
 Let us now block all the incoming traffic 'ingress' to the `frontend` namespace.
 
-[<img src="img/deny-incoming-traffic-to-frontend-namespace.gif" width="80%" />](img/deny-incoming-traffic-to-frontend-namespace.gif.gif)
+[<img src="./img/deny-incoming-traffic-to-frontend-namespace.gif" width="80%" />](./img/deny-incoming-traffic-to-frontend-namespace.gif.gif)
 
 ### Deny all ingress traffic to frontend namespace
 ```yaml
@@ -60,7 +60,7 @@ kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wid
 
 Alternatively, use our shell script to quickly check the same,
 
-[<img src="img/connectivity-check-deny-ingress-to-frontend-ns.jpg" />](img/connectivity-check-deny-ingress-to-frontend-ns.jpg)
+[<img src="./img/connectivity-check-deny-ingress-to-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-to-frontend-ns.jpg)
 
 
 Well, the outbound connections from the `frontend` pod is working without any issues. 
