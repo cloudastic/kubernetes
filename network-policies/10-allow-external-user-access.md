@@ -33,12 +33,12 @@ kubectl get svc -n frontend
 Now let us access the NodePort service.
 [click here]({{TRAFFIC_HOST1_30080}}) to check if the service is accessible.
 
-Well the connection didn't work. Is that expected ? Yes
+Well the connection didn't work. Is that expected ? Yes.
 Why ?  Because we do have a default deny network policy restrict the traffic and that needs to be tweaked to allow access. We can achieve it by modifying the `fe-to-mw-allow-egress-and-ingress` Network policy on the `frontend` namespace. We need to amend another ingress rule to this policy to make it work. 
 
 ### Amend another Ingress rule to the existing Policy to allow traffic
 
-``` yaml
+```yaml
   - from:
     - ipBlock:
         cidr: 0.0.0.0/0  # Allow access from any IP address
@@ -46,6 +46,13 @@ Why ?  Because we do have a default deny network policy restrict the traffic and
       - protocol: TCP
         port: 80 
 ```
+
+Use the Kubectl to make the changes, 
+
+```bash
+kubectl edit netpol -n frontend fe-to-mw-allow-ingress-and-egress
+```{{exec}}
+
 
 Once the changes are made, the resulting network policy should look like below,
 
