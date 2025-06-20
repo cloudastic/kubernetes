@@ -33,7 +33,7 @@ Something from this.,
 
 to this at the end.
 
-[<img src="./img/kubernetes-network-policy.gif" width="80%" />](./img/kubernetes-network-policy.gif)
+[<img src="./img/controlled-end-to-end-flow.gif" width="80%" />](./img/controlled-end-to-end-flow.gif.gif)
 
 
   
