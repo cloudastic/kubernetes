@@ -16,7 +16,7 @@ Execute the below command tp grab the IP address of the external weather service
 ```bash
 echo "IP Address : "$(dig +short wttr.in | grep -E '^[0-9.]+$' | head -n 1)
 ```{{exec}}
-
+```
 Make a note of this IP address and replace it in `to.ipBlock.cidr` section of the yaml while modifying the network policy.
 
 Before we tweak the Network policy, Let us quickly make a connection to see how it behaves now, 
