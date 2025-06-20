@@ -14,6 +14,7 @@ kubectl create ns frontend
 kubectl create ns middleware
 kubectl create ns backend
 ```{{exec}}
+```
 
 ### Create Pods
 ```sh
@@ -21,7 +22,7 @@ kubectl run webapp --image=nginx -n frontend
 kubectl run middleware --image=nginx -n middleware
 kubectl run mysql --image=nginx -n backend
 ```{{exec}}
-
+```
 
 ### Update the default index page for ease of identification
 
@@ -33,7 +34,7 @@ until [ `kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-s
   sleep 1
 done
 ```{{exec}}
-
+```
 Execute the below commands only after the pods are reporting 'Running' status. 
 
 Update the default index page for ease of identification
@@ -43,11 +44,16 @@ In this step we are modifying the default index pages of the nginx for easy iden
 ```plain
 kubectl exec -it -n frontend webapp -- /bin/bash -c "echo Frontend > /usr/share/nginx/html/index.html"
 ```{{exec}}
+```
 
 ```plain
 kubectl exec -it -n middleware middleware -- /bin/bash -c "echo Middleware > /usr/share/nginx/html/index.html"
 ```{{exec}}
 
+```
+
 ```plain
 kubectl exec -it -n backend mysql -- /bin/bash -c "echo Backend > /usr/share/nginx/html/index.html"
 ```{{exec}}
+
+```
