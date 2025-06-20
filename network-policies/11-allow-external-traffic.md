@@ -92,6 +92,8 @@ Now, Let us make the connection once again to check the result of the changes,
 ip_address=$(dig +short wttr.in | grep -E '^[0-9.]+$' | head -n 1)
 kubectl exec -it -n backend mysql -- curl -s -m 2 http://$ip_address
 ```{{exec}}
+
+```
 <br><br>
 You should see a weather forecast if the policy applied is working as desired. 
 
