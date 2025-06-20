@@ -49,7 +49,12 @@
         "title": "Allow External user access",
         "text": "10-allow-external-user-access.md",
         "background": "./assets/scripts/background.sh"
-      }
+      },
+      {
+        "title": "Allow External traffic",
+        "text": "11-allow-external-traffic.md",
+        "background": "./assets/scripts/background.sh"
+      }      
     ]
   },
   "backend": {
