@@ -4,6 +4,7 @@ Let us now allow external users to access the webapp pod in the frontend namespa
 
 [<img src="./img/allow-external-user-access-via-nodeport-svc.gif" width="80%" />](./img/allow-external-user-access-via-nodeport-svc.gif)
 
+Note: We are creating a NodePort service only for the purpose of the demo and to understand various concepts of Kubernetes network policy concepts. NodePort service may be a good fit for Development and testing but not a production use-case. 
 
 ### Create NodePort Service to expose Webapp pod
 ```yaml
