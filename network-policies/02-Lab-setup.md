@@ -9,7 +9,7 @@ Now lets create the kubernetes resources as outlined in the diagram below,
 [<img src="./img/cluster-setup.jpg" width="80%" />](./img/cluster-setup.jpg)
 
 ### Create Namespaces ###
-```sh
+```plain
 kubectl create ns frontend
 kubectl create ns middleware
 kubectl create ns backend
