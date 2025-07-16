@@ -33,5 +33,5 @@ Something from this.,
 
 to this at the end.
 
-[<img src="./network-policies/img/Network-Policy.gif" width="80%" />](./network-policies/img/Network-Policy.gif)
+[<img src="./network-policies/img/controlled-end-to-end-flow.gif" width="80%" />](./network-policies/img/controlled-end-to-end-flow.gif)
   
