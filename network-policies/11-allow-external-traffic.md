@@ -15,7 +15,7 @@ Execute the below command tp grab the IP address of the external weather service
 
 ```bash
 echo "IP Address : "$(dig +short wttr.in | grep -E '^[0-9.]+$' | head -n 1)
-```{{exec}}
+```
 <br>
 Make a note of this IP address and replace it in `to.ipBlock.cidr` section of the yaml while modifying the network policy.<br>
 
@@ -24,7 +24,7 @@ Before we tweak the Network policy, Let us quickly make a connection to see how 
 ```bash
 ip_address=$(dig +short wttr.in | grep -E '^[0-9.]+$' | head -n 1)
 kubectl exec -it -n backend mysql -- curl -s -m 2 http://$ip_address
-```{{exec}}
+```
 
 You might have noticed that the connection is not working due to the restriction we already have in place.
 
@@ -34,7 +34,7 @@ Use kubectl to modify the existing policy `be-to-mw-allow-ingress-and-egress` in
 
 ```bash
 kubectl edit netpol -n backend be-to-mw-allow-ingress-and-egress
-```{{exec}}
+```
 
 ### Amend another Egress rule to the existing Policy to allow traffic
 
@@ -91,7 +91,7 @@ Now, Let us make the connection once again to check the result of the changes,
 ```bash
 ip_address=$(dig +short wttr.in | grep -E '^[0-9.]+$' | head -n 1)
 kubectl exec -it -n backend mysql -- curl -s -m 2 http://$ip_address
-```{{exec}}
+```
 
 <br><br>
 You should see a weather forecast if the policy applied is working as desired. 

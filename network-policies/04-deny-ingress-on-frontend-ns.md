@@ -32,7 +32,7 @@ spec:
   policyTypes:
   - Ingress
 EOF
-```{{exec}}
+```
 
 Now lets try to connect to the `frontend` pod from both the `middleware` and `mysql` pod.
 
@@ -40,12 +40,12 @@ Now lets try to connect to the `frontend` pod from both the `middleware` and `my
 ```sh
 # Test Ingress from 'middleware' to 'webapp' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 ```sh
 # Test Ingress from 'mysql' to 'webapp' pod
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 Both the ingress requests have now timed out, clearly indicating that incoming traffic to the `frontend` namespace is blocked. Let us now try to establish outbound connection from the `webapp` pod in the `frontend` namespace to other pods in `middleware` and `backend` namespace.
 
@@ -54,18 +54,18 @@ Both the ingress requests have now timed out, clearly indicating that incoming t
 ```sh
 # Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 ```sh
 # Test Egress from 'webapp' to 'mysql' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 Alternatively, use our shell script to quickly check the same,
 
 ```bash
 ./validate_connectivity.sh
-```{{exec}}
+```
 
 [<img src="./img/connectivity-check-deny-ingress-to-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-to-frontend-ns.jpg)
 

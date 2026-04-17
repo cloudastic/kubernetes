@@ -18,13 +18,13 @@ spec:
   policyTypes:
   - Egress
 EOF
-```{{exec}}
+```
 
 Check if you are able to see both the Network policies applied to the `frontend` namespace,
 
 ```sh
 kubectl get netpol -n frontend
-```{{exec}}
+```
 
 Let us now verify the outbound connectivity from the `frontend` namespace,
 
@@ -34,16 +34,16 @@ Let us now verify the outbound connectivity from the `frontend` namespace,
 ```sh
 # Test Egress from 'webapp' to 'middleware' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 ```sh
 # Test Egress from 'webapp' to 'mysql' pod
 kubectl exec -it -n frontend webapp -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```{{exec}}
+```
 
 ```bash
 ./validate_connectivity.sh
-```{{exec}}
+```
 
 [<img src="./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg" />](./img/connectivity-check-deny-ingress-and-egress-on-frontend-ns.jpg)
 

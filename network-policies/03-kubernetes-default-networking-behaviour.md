@@ -55,7 +55,7 @@ Instead of running the `kubectl` commands several times to test the inbound and 
 
 ```bash
 ./validate_connectivity.sh
-```{{exec}}
+```
 
 and produces output like this, 
 

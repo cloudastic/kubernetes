@@ -33,7 +33,7 @@ spec:
           matchLabels:
             run: mysql
 EOF
-```{{exec}}
+```
 
 ### Allow Ingress & Egress on backend to middleware
 
@@ -64,11 +64,11 @@ spec:
           matchLabels:
             run: middleware
 EOF
-```{{exec}}
+```
 
 ```bash
 ./validate_connectivity.sh
-```{{exec}}
+```
 
 Note: We need to enable the `ingress` on the middleware and the `egress` on the frontend namespace to allow the communication to happen. 
 
