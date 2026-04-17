@@ -33,6 +33,12 @@ until [ `kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-s
 done
 ```{{exec}}
 
+Lets verify if these pods are running,
+
+```sh
+kubectl get pods -A | grep -vE 'kube-system|local-path-storage'
+```{{exec}}
+
 Execute the below commands only after the pods are reporting 'Running' status. 
 
 Update the default index page for ease of identification
