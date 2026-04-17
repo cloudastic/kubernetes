@@ -55,12 +55,7 @@
         "text": "11-allow-external-traffic.md",
         "background": "./assets/scripts/background.sh"
       }
-    ],
-    "assets": {
-      "controlplane": [
-        { "file": "img/*", "target": "~/", "chmod": "+r"}
-      ]
-    }
+    ]
   },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
