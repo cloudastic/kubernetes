@@ -19,7 +19,7 @@ spec:
   - Ingress
   - Egress
 EOF
-```
+```{{exec}}
 
 ### Deny both ingress and egress on backend namespace
 ```yaml
@@ -34,24 +34,24 @@ spec:
   - Ingress
   - Egress
 EOF
-```
+```{{exec}}
 
 Verify if the Network Policies are created
 ```sh
 kubectl get netpol default-deny -n middleware
-```
+```{{exec}}
 
 ```sh
 kubectl describe netpol default-deny -n middleware
-```
+```{{exec}}
 
 ```sh
 kubectl get netpol default-deny -n backend
-```
+```{{exec}}
 
 ```sh
 kubectl describe netpol default-deny -n backend
-```
+```{{exec}}
 
 Whilst describing the NetworkPolicy, notice that the Policy type reflects both the `Policy Types: Ingress, Egress`. 
 
@@ -62,18 +62,18 @@ Let's test the connectivity between the pods across all these namespaces, (Since
 ```sh
 # Test Egress from 'middleware' to 'backend' pod
 kubectl exec -it -n middleware middleware -- curl -m 3 $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 ```sh
 # Test Egress from 'mysql' to 'middleware' pod
 kubectl exec -it -n backend mysql -- curl -m 3 $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
-```
+```{{exec}}
 
 We have now restricted both the `ingress` and `egress` traffic across all these namespaces.
 
 ```bash
 ./validate_connectivity.sh
-```
+```{{exec}}
 
 [<img src="./img/connectivity-check-deny-ingress-and-egress.jpg" />](./img/connectivity-check-deny-ingress-and-egress.jpg)
 

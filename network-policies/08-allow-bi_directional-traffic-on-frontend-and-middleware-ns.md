@@ -9,11 +9,11 @@ We can simplify the process futher by combining the `ingress` and `egress` rules
 ### Delete the Network Policies created in the previous chapter
 ```sh
 kubectl delete netpol -n middleware mw-to-fe-allow-ingress
-```
+```{{exec}}
 
 ```sh
 kubectl delete netpol -n frontend fe-to-mw-allow-egress
-```
+```{{exec}}
 
 ### Allow Ingress & Egress on middleware to frontend
 ```yaml
@@ -43,7 +43,7 @@ spec:
           matchLabels:
             run: webapp
 EOF
-```
+```{{exec}}
 
 ### Allow Ingress & Egress on frontend to middleware
 
@@ -74,13 +74,13 @@ spec:
           matchLabels:
             run: middleware
 EOF
-```
+```{{exec}}
 
 We have combined both the `ingress` and the `egress` rules in a single Network policy and applied the same on both the namespaces.
 
 ```bash
 ./validate_connectivity.sh
-```
+```{{exec}}
 
 [<img src="./img/connectivity-check-frontend-and-middleware.jpg" />](./img/connectivity-check-frontend-and-middleware.jpg)
 
