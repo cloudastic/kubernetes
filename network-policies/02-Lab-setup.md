@@ -43,7 +43,7 @@ Execute the below commands only after the pods are reporting 'Running' status.
 
 Grab the IP address of these newly created pods using the `-o wide` switch,
 ```sh
-kubectl get pods -A -o switch| grep -vE 'kube-system|local-path-storage'
+kubectl get pods -A -o wide | grep -vE 'kube-system|local-path-storage'
 ```{{exec}}
 
 Lets verify if these nginx pods are serving the default "Welcome to nginx!" page.
