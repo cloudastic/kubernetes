@@ -1,7 +1,7 @@
 name: Strip KillerCoda Markers
 
 on:
-  pull_request:
+  push:
     branches:
       - main
     paths:
@@ -14,10 +14,10 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout PR branch
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Strip KillerCoda markers from markdown files
@@ -33,3 +33,4 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "chore: strip KillerCoda markers for GitHub compatibility"
           git push
+          
