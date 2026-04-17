@@ -56,6 +56,9 @@
         "background": "./assets/scripts/background.sh"
       }      
     ]
+    "assets": {
+      "controlplane": [
+        {"file": "img/*", "target": "~/", "chmod": "+r"}
   },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
