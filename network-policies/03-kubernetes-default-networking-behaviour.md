@@ -15,7 +15,7 @@ Now that we have already created the necessary resources, lets try to establish 
 ## Check the IP Address of each pods
 ```sh
 kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spec.nodeName!=controlplane
-```
+```{{exec}}
 Notice that each pods are assigned with a unique IP address. 
 
 ## Connect from webapp to middleware pod
