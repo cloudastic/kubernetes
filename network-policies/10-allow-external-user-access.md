@@ -23,13 +23,13 @@ spec:
       nodePort: 30080   # Expose the service on this node port externally
   type: NodePort        # set NodePort type to make the service accessible externally
 EOF
-```{{exec}}
+```
 
 ### Verify the NodePort service
 
 ```yaml
 kubectl get svc -n frontend
-```{{exec}}
+```
 
 Now let us access the NodePort service.
 [click here]({{TRAFFIC_HOST1_30080}}) to check if the service is accessible.
@@ -52,7 +52,7 @@ Use the Kubectl to make the changes,
 
 ```bash
 kubectl edit netpol -n frontend fe-to-mw-allow-ingress-and-egress
-```{{exec}}
+```
 
 
 Once the changes are made, the resulting network policy should look like below,
@@ -92,10 +92,10 @@ spec:
   policyTypes:
   - Ingress
   - Egress
-```{{exec}}
+```
 
 ```bash
 ./validate_connectivity.sh
-```{{exec}}
+```
 
 Now try and access the NodePort service by [clicking on this link]({{TRAFFIC_HOST1_30080}}). If the connection is successful, you should see 'frontend' text on this page. 
