@@ -13,7 +13,7 @@
       {
         "title": "Kubernetes default network behaviour",
         "text": "03-kubernetes-default-networking-behaviour.md",
-         "background": "validate_connectivity.sh"
+        "background": "validate_connectivity.sh"
       },
       {
         "title": "Deny ingress on frontend namespace",
@@ -54,11 +54,13 @@
         "title": "Allow External traffic",
         "text": "11-allow-external-traffic.md",
         "background": "./assets/scripts/background.sh"
-      }      
-    ]
+      }
+    ],
     "assets": {
       "controlplane": [
-        {"file": "img/*", "target": "~/", "chmod": "+r"}
+        { "file": "img/*", "target": "~/", "chmod": "+r"}
+      ]
+    }
   },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
