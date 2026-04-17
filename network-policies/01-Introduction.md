@@ -4,8 +4,8 @@
 
 In this section, you will learn about, 
   * What are Kubernetes Network Policies
-  * What challenge it addresses
   * What is CNI (Container Network Interface) plugins and why do we need them
+  * What challenge it addresses
   * Default network communication in Kubernetes
   * Anatomy of the Network Policy yaml definition
   * Network Policy types
