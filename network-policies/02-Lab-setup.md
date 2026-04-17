@@ -63,4 +63,4 @@ kubectl exec -it -n middleware middleware -- /bin/bash -c "echo Middleware > /us
 kubectl exec -it -n backend mysql -- /bin/bash -c "echo Backend > /usr/share/nginx/html/index.html"
 ```{{exec}}
 
-
+At this point, We have all the necessary resources to get started.
