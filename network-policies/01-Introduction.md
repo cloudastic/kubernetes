@@ -5,7 +5,7 @@
 In this section, you will learn about, 
   * What are Kubernetes Network Policies
   * What challenge it addresses
-  * What is CNI (Container Network Interface) and why its needed
+  * What is CNI (Container Network Interface) plugins and why do we need them
   * Default network communication in Kubernetes
   * Anatomy of the Network Policy yaml definition
   * Network Policy types
@@ -23,15 +23,17 @@ In this section, you will learn about,
   * Use-cases
   * Network Policy tips & tricks
 
-All the explanations are covered with with a use-case scenario that helps gain deeper understanding of the concepts. 
+All the explanations are covered with a use-case scenario that helps gain deeper understanding of the concepts. 
 
 We will start with basics and slowly work our way from the default kubernetes network communication and move towards applying the Network policies (case-by-case) with examples. 
 
 Something from this., 
 
-[<img src="./network-policies/img/kubernetes-default-communication-multiple-ns.gif" width="80%" />](./network-policies/img/kubernetes-default-communication-multiple-ns.gif)
+[<img src="./img/kubernetes-default-communication.gif" width="80%" />](./img/kubernetes-default-communication.gif)
 
 to this at the end.
 
-[<img src="./network-policies/img/controlled-end-to-end-flow.gif" width="80%" />](./network-policies/img/controlled-end-to-end-flow.gif)
+[<img src="./img/controlled-end-to-end-flow.gif" width="80%" />](./img/controlled-end-to-end-flow.gif)
+
+
   
