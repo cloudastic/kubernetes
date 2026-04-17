@@ -13,7 +13,7 @@ Now lets create the kubernetes resources as outlined in the diagram below,
 kubectl create ns frontend
 kubectl create ns middleware
 kubectl create ns backend
-```
+```{{exec}}
 
 ### Create Pods
 ```sh
