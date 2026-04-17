@@ -39,11 +39,17 @@ Lets verify if these pods are running,
 kubectl get pods -A | grep -vE 'kube-system|local-path-storage'
 ```{{exec}}
 
-Execute the below commands only after the pods are reporting 'Running' status. 
+Execute the below commands only after the pods are reporting 'Running' status.
 
-Update the default index page for ease of identification
+Grab the IP address of these newly created pods using the `-o wide` switch,
+```sh
+kubectl get pods -A -o switch| grep -vE 'kube-system|local-path-storage'
+```{{exec}}
 
-In this step we are modifying the default index pages of the nginx for easy identification.
+Lets verify if these nginx pods are serving the default "Welcome to nginx!" page.
+Simply run the 'curl' command against the IP address of any of these pods.
+
+Now, Let us modify the default index page of these pods for ease of identification
 
 ```sh
 kubectl exec -it -n frontend webapp -- /bin/bash -c "echo Frontend > /usr/share/nginx/html/index.html"
