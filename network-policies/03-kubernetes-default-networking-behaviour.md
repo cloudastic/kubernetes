@@ -18,32 +18,32 @@ kubectl get pods -A -o wide --field-selector=metadata.namespace!=kube-system,spe
 ```
 Notice that each pods are assigned with a unique IP address. 
 
-## Connect from webapp to middleware pod
+## 01. Connect from webapp to middleware pod
 ```sh
 kubectl exec -it -n frontend webapp -- curl $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 ```
 
-## Connect from webapp to mysql pod
-```plain
-kubectl exec -it -n frontend webapp -- curl $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
-```
-
-## Connect from middleware to webapp pod
-```plain
-kubectl exec -it -n middleware middleware -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
-```
-
-## Connect from middleware to mysql pod
+## 02. Connect from middleware to mysql pod
 ```plain
 kubectl exec -it -n middleware middleware -- curl $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
 ```
 
-## Connect from mysql to middleware pod
+## 03. Connect from webapp to mysql pod
+```plain
+kubectl exec -it -n frontend webapp -- curl $(kubectl get pods mysql -o wide -n backend -o jsonpath="{.status.podIP}")
+```
+
+## 04. Connect from mysql to middleware pod
 ```plain
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods middleware -o wide -n middleware -o jsonpath="{.status.podIP}")
 ```
 
-## Connect from mysql to webapp pod
+## 05. Connect from middleware to webapp pod
+```plain
+kubectl exec -it -n middleware middleware -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
+```
+
+## 06. Connect from mysql to webapp pod
 ```plain
 kubectl exec -it -n backend mysql -- curl $(kubectl get pods webapp -o wide -n frontend -o jsonpath="{.status.podIP}")
 ```
